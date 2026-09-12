@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="新潟の便利屋「田村 助っ人さん」（田村設備）。住まいの修繕40年、新潟県内全域に出張。お見積もり無料・即日対応可。">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<title>田村 助っ人さん</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap">
+<style>
+  /* 一枚のホームページとして明るい配色に固定（参考サイトと同じ白基調） */
+  :root {
+    --ground: #ffffff;
+    --tint: #f3f5f9;
+    --ink: #1b2233;
+    --ink-soft: #4a5367;
+    --line: #dfe3ec;
+    --navy: #152a5a;
+    --navy-deep: #0e1d40;
+    --orange: #ff5900;
+    --orange-text: #d94a00;
+    --line-green: #06c755;
+    --display: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    --body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    --label: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --gutter: max(16px, 4vw);
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--body); font-size: 16px; line-height: 1.9; letter-spacing: .02em;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+  .wrap { max-width: 1140px; margin-inline: auto; padding-inline: var(--gutter); }
+
+  /* ---------- header ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.96);
+    border-bottom: 1px solid var(--line); backdrop-filter: blur(6px);
+  }
+  .site-header .wrap { display: flex; align-items: center; gap: 24px; min-height: 84px; max-width: 1280px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+  .brand img { width: 52px; height: 52px; }
+  .brand-name { font-family: var(--display); font-weight: 900; font-size: 22px; line-height: 1.2; color: var(--navy); letter-spacing: .06em; white-space: nowrap; }
+  .brand-sub { display: block; font-family: var(--body); font-weight: 500; font-size: 11px; color: var(--ink-soft); letter-spacing: .08em; }
+  .gnav { display: flex; margin-left: auto; }
+  .gnav a {
+    display: grid; justify-items: center; padding: 6px 10px; text-decoration: none; white-space: nowrap;
+    font-weight: 700; font-size: 14px; line-height: 1.4; color: var(--ink); border-bottom: 2px solid transparent;
+  }
+  .gnav a small { font-family: var(--label); font-weight: 600; font-size: 12px; letter-spacing: .12em; color: var(--orange-text); text-transform: uppercase; }
+  .gnav a:hover { border-bottom-color: var(--orange); }
+  .head-tel { display: grid; flex-shrink: 0; white-space: nowrap; text-decoration: none; line-height: 1.2; padding-left: 20px; border-left: 1px solid var(--line); }
+  .head-tel b { font-family: var(--label); font-weight: 700; font-size: 28px; color: var(--navy); letter-spacing: .03em; font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 6px; }
+  .head-tel b svg { width: 22px; height: 22px; fill: var(--orange); }
+  .head-tel span { font-size: 11px; color: var(--ink-soft); font-weight: 500; }
+  @media (max-width: 1180px) { .gnav { display: none; } .head-tel { margin-left: auto; } }
+  @media (max-width: 560px) {
+    .site-header .wrap { min-height: 64px; }
+    .brand img { width: 40px; height: 40px; }
+    .brand-name { font-size: 18px; }
+    .head-tel { border: 0; padding: 0; }
+    .head-tel b { font-size: 0; }
+    .head-tel b svg { width: 26px; height: 26px; }
+    .head-tel span { display: none; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; color: #fff; background: var(--navy-deep); overflow: hidden; }
+  .hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 35%; }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(14,29,64,.94) 0%, rgba(14,29,64,.82) 50%, rgba(14,29,64,.5) 100%);
+  }
+  .hero .wrap {
+    position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+    gap: 24px; align-items: end; padding-block: 72px 0;
+  }
+  .hero-copy { padding-bottom: 84px; }
+  .hero-person { position: relative; margin: 0 -4% 0 0; justify-self: end; width: 130%; max-width: 620px; }
+  .hero-person::before {
+    content: ""; position: absolute; left: 5%; right: 5%; bottom: 10%; aspect-ratio: 1; border-radius: 50%;
+    background: radial-gradient(circle at 42% 38%, #ffffff 0%, #ffeadd 55%, #ffc39f 100%);
+    box-shadow: 0 0 0 10px rgba(255,89,0,.35);
+  }
+  .hero-person img { position: relative; width: 100%; height: auto; }
+  .hero-bubble {
+    position: absolute; z-index: 2; top: 4%; right: -2%; margin: 0; padding: 12px 20px; border-radius: 16px;
+    background: #fff; color: var(--navy); font-family: var(--display); font-weight: 900; font-size: 18px; line-height: 1.45;
+    text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,.28);
+  }
+  .hero-bubble::after {
+    content: ""; position: absolute; left: 26px; bottom: -13px;
+    border-style: solid; border-width: 14px 10px 0; border-color: #fff transparent transparent;
+  }
+  .hero-bubble span { color: var(--orange-text); }
+  .hero-name {
+    position: absolute; z-index: 2; left: 50%; bottom: 22px; transform: translateX(-50%); margin: 0;
+    background: var(--orange); color: #fff; padding: 8px 26px; white-space: nowrap; text-align: center;
+    font-weight: 700; font-size: 13px; line-height: 1.4; box-shadow: 0 8px 20px rgba(0,0,0,.3);
+  }
+  .hero-name b { display: block; font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: .08em; }
+  @media (max-width: 900px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 8px; padding-block: 48px 0; }
+    .hero-copy { padding-bottom: 12px; }
+    .hero-person { width: 100%; max-width: 420px; margin: 0; justify-self: center; }
+    .hero-bubble { right: -2%; top: 2%; font-size: 15px; padding: 10px 14px; }
+    .hero-name { bottom: 16px; }
+    .hero-name b { font-size: 18px; }
+  }
+  .hero-kicker {
+    display: inline-block; font-weight: 700; font-size: 14px; letter-spacing: .1em;
+    background: var(--orange); color: #fff; padding: 4px 14px; margin: 0 0 22px;
+  }
+  .hero h1 {
+    font-family: var(--display); font-weight: 900; margin: 0; max-width: 15em;
+    font-size: clamp(30px, 4.3vw, 48px); line-height: 1.4; letter-spacing: .04em; text-wrap: balance;
+  }
+  .hero h1 em { font-style: normal; color: #ffb28a; }
+  .hero-lead { max-width: 30em; margin: 22px 0 0; font-size: clamp(15px, 1.6vw, 17px); color: #e3e8f4; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 0; padding: 0; list-style: none; }
+  .hero-badges li {
+    display: grid; place-items: center; text-align: center; width: 104px; height: 104px; border-radius: 50%;
+    background: #fff; color: var(--navy); font-weight: 700; font-size: 13px; line-height: 1.35;
+  }
+  .hero-badges li b { display: block; font-family: var(--display); font-weight: 900; font-size: 22px; color: var(--orange-text); line-height: 1.1; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 56px; padding: 0 28px; text-decoration: none; font-weight: 700; font-size: 16px;
+    border-radius: 999px; transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(14,29,64,.22); }
+  .btn-line { background: var(--line-green); color: #fff; }
+  .btn-line svg { fill: #fff; }
+  .btn-tel { background: var(--orange); color: #fff; }
+  .btn-tel svg { fill: #fff; }
+  .btn-ghost { border: 2px solid var(--navy); color: var(--navy); background: #fff; }
+
+  /* ---------- section heads ---------- */
+  .section { padding-block: 96px; }
+  .section.tint { background: var(--tint); }
+  .sec-head { margin: 0 0 48px; text-align: center; }
+  .sec-head .en {
+    display: block; font-family: var(--label); font-weight: 600; font-size: 18px; letter-spacing: .24em;
+    text-transform: uppercase; color: var(--orange-text); line-height: 1;
+  }
+  .sec-head h2 {
+    margin: 10px 0 0; font-family: var(--display); font-weight: 900; color: var(--navy);
+    font-size: clamp(26px, 3.6vw, 38px); line-height: 1.4; letter-spacing: .06em; text-wrap: balance;
+  }
+  .sec-head h2::after { content: ""; display: block; width: 44px; height: 3px; background: var(--orange); margin: 18px auto 0; }
+  .sec-head p { margin: 18px auto 0; max-width: 36em; color: var(--ink-soft); }
+  .sec-head.left { text-align: left; }
+  .sec-head.left h2::after { margin-left: 0; }
+  @media (max-width: 560px) { .section { padding-block: 64px; } .sec-head { margin-bottom: 32px; } }
+
+  /* ---------- company ---------- */
+  .company { display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
+  .company-text p { margin: 0 0 1.2em; max-width: 34em; }
+  .company-text .big { font-family: var(--display); font-weight: 700; font-size: 21px; line-height: 1.7; color: var(--navy); }
+  .company-text .big mark { background: linear-gradient(transparent 62%, #ffd9c4 62%); color: inherit; }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); margin: 28px 0 32px; border-block: 1px solid var(--line); }
+  .facts div { padding: 16px 8px; text-align: center; }
+  .facts div + div { border-left: 1px solid var(--line); }
+  .facts dt { font-size: 12px; color: var(--ink-soft); font-weight: 500; line-height: 1.4; }
+  .facts dd { margin: 4px 0 0; font-family: var(--display); font-weight: 900; font-size: 20px; line-height: 1.3; color: var(--navy); }
+  .facts dd small { font-size: 13px; }
+  .company-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .company-photos figure { margin: 0; }
+  .company-photos figure img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+  .company-photos figure:first-child img { object-position: 58% center; }
+  .company-photos figcaption { font-size: 12px; line-height: 1.6; padding-top: 8px; color: var(--ink-soft); }
+  @media (max-width: 860px) { .company { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* ---------- services ---------- */
+  .services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 24px; list-style: none; margin: 0; padding: 0; }
+  .svc { background: #fff; display: flex; flex-direction: column; }
+  .svc img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 40%; }
+  .svc-body { padding: 18px 18px 22px; display: grid; gap: 8px; }
+  .svc h3 { margin: 0; font-family: var(--display); font-weight: 900; font-size: 18px; line-height: 1.4; color: var(--navy); }
+  .svc p { margin: 0; font-size: 14px; line-height: 1.75; color: var(--ink-soft); }
+  .svc ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; padding: 0; list-style: none; }
+  .svc ul li { font-size: 12px; line-height: 1.5; padding: 2px 8px; border: 1px solid #f3c7ae; color: var(--orange-text); background: #fff6f1; font-weight: 500; }
+  @media (max-width: 1000px) { .services { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 760px) { .services { grid-template-columns: repeat(2, 1fr); gap: 16px; } .svc-body { padding: 12px 12px 16px; } .svc h3 { font-size: 16px; } .svc p { display: none; } }
+
+  .anything {
+    margin-top: 56px; display: grid; grid-template-columns: 240px 1fr auto; gap: 32px; align-items: center;
+    background: var(--navy); color: #fff; padding: 28px 40px 28px 28px;
+  }
+  .anything img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: center 45%; border-radius: 50%; border: 4px solid #fff; background: #fff; }
+  .kid { position: relative; }
+  .kid-bubble {
+    position: absolute; z-index: 2; top: -48px; left: 48%; margin: 0; padding: 12px 20px; border-radius: 16px;
+    background: #fff; color: var(--orange-text); font-family: var(--display); font-weight: 900; font-size: 18px; line-height: 1.45;
+    white-space: nowrap; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,.28);
+  }
+  .kid-bubble::after {
+    content: ""; position: absolute; left: 26px; bottom: -13px;
+    border-style: solid; border-width: 14px 10px 0; border-color: #fff transparent transparent;
+  }
+  .kid-bubble span { color: var(--orange-text); }
+  @media (max-width: 860px) {
+    .kid-bubble { top: -70px; left: 30px; font-size: 15px; padding: 10px 14px; }
+    .kid-bubble::after { left: 18px; }
+  }
+  .anything h3 { margin: 0 0 6px; font-family: var(--display); font-weight: 900; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.5; text-wrap: balance; }
+  .anything h3 span { color: #ffb28a; }
+  .anything h3 + p { margin: 0; color: #d5dcec; font-size: 15px; }
+  @media (max-width: 860px) {
+    .anything { grid-template-columns: 120px 1fr; padding: 24px; gap: 20px; }
+    .anything .btn { grid-column: 1 / -1; }
+  }
+
+  /* ---------- area ---------- */
+  .area { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .area-photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 30%; }
+  .area-big { font-family: var(--display); font-weight: 900; color: var(--navy); font-size: clamp(34px, 5vw, 54px); line-height: 1.25; margin: 0 0 20px; letter-spacing: .04em; }
+  .area-big span { color: var(--orange-text); }
+  .area p { margin: 0 0 1em; max-width: 32em; }
+  .cities { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; padding: 0; list-style: none; }
+  .cities li { padding: 4px 14px; background: var(--tint); font-size: 14px; font-weight: 500; }
+  .snow { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border: 2px solid var(--navy); margin-top: 8px; }
+  .snow svg { width: 32px; height: 32px; flex-shrink: 0; stroke: var(--navy); }
+  .snow p { margin: 0; font-size: 14px; line-height: 1.8; }
+  .snow b { color: var(--navy); font-size: 15px; }
+  @media (max-width: 860px) { .area { grid-template-columns: 1fr; gap: 32px; } .area-photo { aspect-ratio: 16 / 10; } }
+
+  /* ---------- price & flow ---------- */
+  .promise { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 0 0 64px; padding: 0; list-style: none; }
+  .promise li { background: #fff; padding: 32px 24px; text-align: center; border-top: 4px solid var(--orange); }
+  .promise b { display: block; font-family: var(--display); font-weight: 900; font-size: 26px; color: var(--navy); line-height: 1.4; }
+  .promise span { display: block; margin-top: 10px; font-size: 14px; color: var(--ink-soft); line-height: 1.8; }
+  .flow-title { text-align: center; font-family: var(--display); font-weight: 900; font-size: 22px; color: var(--navy); margin: 0 0 28px; }
+  .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin: 0; padding: 0; list-style: none; counter-reset: step; }
+  .flow li { position: relative; counter-increment: step; padding-top: 4px; }
+  .flow li::before {
+    content: "STEP " counter(step); display: inline-block; font-family: var(--label); font-weight: 700; font-size: 16px;
+    letter-spacing: .12em; color: #fff; background: var(--navy); padding: 2px 12px; margin-bottom: 10px;
+  }
+  .flow li + li::after {
+    content: ""; position: absolute; left: -28px; top: 10px; width: 14px; height: 14px;
+    border-top: 3px solid var(--orange); border-right: 3px solid var(--orange); transform: rotate(45deg);
+  }
+  .flow h4 { margin: 0 0 6px; font-size: 17px; line-height: 1.5; color: var(--ink); }
+  .flow p { margin: 0; font-size: 14px; color: var(--ink-soft); line-height: 1.8; }
+  @media (max-width: 760px) {
+    .promise { grid-template-columns: 1fr; gap: 12px; }
+    .promise li { padding: 20px; }
+    .flow { grid-template-columns: 1fr; gap: 28px; }
+    .flow li + li::after { left: 2px; top: -22px; transform: rotate(135deg); }
+  }
+
+  /* ---------- contact ---------- */
+  .contact { background: var(--navy); color: #fff; padding-block: 88px; }
+  .contact .sec-head h2 { color: #fff; }
+  .contact .sec-head .en { color: #ffb28a; }
+  .contact .sec-head p { color: #d5dcec; }
+  .contact-box { display: grid; grid-template-columns: 1fr 1fr; background: #fff; color: var(--ink); max-width: 920px; margin-inline: auto; }
+  .contact-box > div { padding: 36px 32px; display: grid; gap: 10px; align-content: center; justify-items: center; text-align: center; }
+  .contact-box > div + div { border-left: 1px solid var(--line); }
+  .contact-box h3 { margin: 0; font-size: 15px; font-weight: 700; color: var(--ink-soft); }
+  .contact-tel { font-family: var(--label); font-weight: 700; font-size: clamp(36px, 5vw, 48px); color: var(--navy); text-decoration: none; line-height: 1.1; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+  .contact-box .note { margin: 0; font-size: 13px; color: var(--ink-soft); }
+  .mail { margin-top: 24px; text-align: center; font-size: 15px; color: #d5dcec; }
+  .mail a { color: #fff; font-weight: 700; overflow-wrap: anywhere; }
+  @media (max-width: 760px) { .contact-box { grid-template-columns: 1fr; } .contact-box > div + div { border-left: 0; border-top: 1px solid var(--line); } .contact-box > div { padding: 28px 20px; } }
+
+  /* ---------- footer ---------- */
+  .site-footer { background: var(--navy-deep); color: #c3cbe0; padding-block: 48px 32px; font-size: 13px; }
+  .site-footer .wrap { display: grid; gap: 28px; }
+  .foot-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; }
+  .foot-brand { display: flex; align-items: center; gap: 14px; }
+  .foot-brand img { width: 56px; height: 56px; background: #fff; border-radius: 50%; }
+  .foot-brand b { display: block; font-family: var(--display); font-weight: 900; font-size: 20px; color: #fff; line-height: 1.3; }
+  .foot-nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+  .foot-nav a { text-decoration: none; color: #c3cbe0; }
+  .foot-nav a:hover { color: #fff; }
+  .copy { border-top: 1px solid rgba(255,255,255,.12); padding-top: 20px; text-align: center; }
+
+  /* ---------- mobile fixed bar ---------- */
+  .fixbar { display: none; }
+  @media (max-width: 760px) {
+    .fixbar { display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; box-shadow: 0 -4px 16px rgba(0,0,0,.15); }
+    .fixbar a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 58px; color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; }
+    .fixbar a svg { width: 20px; height: 20px; fill: #fff; }
+    .fixbar .t { background: var(--orange); }
+    .fixbar .l { background: var(--line-green); }
+    .site-footer { padding-bottom: 90px; }
+    .hero::after { background: linear-gradient(180deg, rgba(14,29,64,.55) 0%, rgba(14,29,64,.9) 60%); }
+    .hero-badges li { width: 88px; height: 88px; font-size: 12px; }
+    .hero-badges li b { font-size: 18px; }
+    .hero-cta .btn { flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+  <symbol id="i-line" viewBox="0 0 24 24"><path d="M12 2.5C6.2 2.5 1.5 6.3 1.5 11c0 4.2 3.7 7.7 8.8 8.4.35.08.82.23.94.53.1.27.07.7.03.97l-.15.9c-.05.27-.21 1.05.92.57 1.13-.47 6.1-3.6 8.3-6.15C21.9 14.6 22.5 12.9 22.5 11c0-4.7-4.7-8.5-10.5-8.5zM8.1 13.6H6a.55.55 0 0 1-.55-.55V8.9a.55.55 0 1 1 1.1 0v3.6H8.1a.55.55 0 1 1 0 1.1zm2.15-.55a.55.55 0 1 1-1.1 0V8.9a.55.55 0 1 1 1.1 0zm5 0a.55.55 0 0 1-.99.33l-2.1-2.87v2.54a.55.55 0 1 1-1.1 0V8.9a.55.55 0 0 1 .99-.33l2.1 2.87V8.9a.55.55 0 1 1 1.1 0zm3.35-2.62a.55.55 0 1 1 0 1.1h-1.55v.97h1.55a.55.55 0 1 1 0 1.1H16.5a.55.55 0 0 1-.55-.55V8.9c0-.3.25-.55.55-.55h2.1a.55.55 0 1 1 0 1.1h-1.55v.98z"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="img/logo.svg" alt="田村設備 ロゴ" width="52" height="52">
+      <span class="brand-name">田村 助っ人さん<span class="brand-sub">新潟の便利屋・住まいのお困りごと</span></span>
+    </a>
+    <nav class="gnav" aria-label="メインメニュー">
+      <a href="#top">トップ<small>Top</small></a>
+      <a href="#company">私たちについて<small>Company</small></a>
+      <a href="#service">サービス<small>Service</small></a>
+      <a href="#area">対応エリア<small>Area</small></a>
+      <a href="#price">料金<small>Price</small></a>
+      <a href="#contact">お問い合わせ<small>Contact</small></a>
+    </nav>
+    <a class="head-tel" href="tel:09028473701" aria-label="電話をかける 090-2847-3701">
+      <b><svg aria-hidden="true"><use href="#i-tel"/></svg>090-2847-3701</b>
+      <span>お見積もり無料・即日対応可</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <img class="hero-photo" src="img/IMG_3219.jpg" alt="天井の作業をする職人と、お手伝いする子ども">
+    <div class="wrap">
+      <div class="hero-copy">
+      <p class="hero-kicker">地域密着・新潟県内対応</p>
+      <h1>住まいのお困りごと、<br>頼れる<em>「助っ人」</em>にお任せ！</h1>
+      <p class="hero-lead">草刈り・家具移動から本格リフォームまで。地域密着で、どんな小さな「困った」にも親身に対応いたします。</p>
+      <ul class="hero-badges">
+        <li><span><b>40年</b>修繕の実績</span></li>
+        <li><span><b>無料</b>お見積もり</span></li>
+        <li><span><b>即日</b>対応可</span></li>
+      </ul>
+      <div class="hero-cta">
+        <a class="btn btn-line" href="https://lin.ee/r9Gij4d" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-line"/></svg>LINEで相談する</a>
+        <a class="btn btn-tel" href="tel:09028473701"><svg aria-hidden="true"><use href="#i-tel"/></svg>電話で相談する</a>
+      </div>
+      </div>
+      <figure class="hero-person">
+        <p class="hero-bubble">小さな「困った」も<br><span>お気軽にどうぞ！</span></p>
+        <img src="img/papa.png" alt="田村設備 代表の写真" width="900" height="900">
+        <figcaption class="hero-name">田村設備 代表<b>田村 助っ人さん</b></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="company">
+    <div class="wrap company">
+      <div class="company-text">
+        <div class="sec-head left">
+          <span class="en">Company</span>
+          <h2>田村 助っ人さんって？</h2>
+        </div>
+        <p class="big">おかげさまで<mark>40年</mark>。住まいの修繕実績を誇る、地域に根ざしたアットホームな便利屋です。</p>
+        <p>新潟県内どこでも出張いたします。プロの技術をお見せするだけでなく、お子様と一緒に楽しく作業したり、簡単なDIY体験もお任せいただけます。</p>
+        <p>家族でお手伝いいたします！</p>
+        <dl class="facts">
+          <div><dt>住まいの修繕</dt><dd>40<small>年</small></dd></div>
+          <div><dt>対応エリア</dt><dd>新潟県内<br><small>全域</small></dd></div>
+          <div><dt>サービス</dt><dd>12<small>分野</small></dd></div>
+        </dl>
+        <a class="btn btn-ghost" href="#service">サービス一覧を見る</a>
+      </div>
+      <div class="company-photos">
+        <figure>
+          <img src="img/introductionImg.jpg" alt="田村設備 代表">
+          <figcaption>地域に根ざして40年、住まいを見守ってきました</figcaption>
+        </figure>
+        <figure>
+          <img src="img/IMG_3224.jpg" alt="蔵の外壁を補修する様子">
+          <figcaption>蔵の外壁補修も。古いお住まいもお任せください</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="service">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="en">Service</span>
+        <h2>提供サービス</h2>
+        <p>高所の作業から、電球1つの交換まで。住まいのことなら何でもご相談ください。</p>
+      </div>
+      <ul class="services">
+        <li class="svc"><img src="img/IMG_3225.jpg" alt="屋根・高所作業の様子" loading="lazy"><div class="svc-body"><h3>屋根・高所作業</h3><p>危険な高所作業や冬場の屋根の雪下ろしを代行</p><ul><li>屋根点検</li><li>雪下ろし</li><li>高所作業</li></ul></div></li>
+        <li class="svc"><img src="img/IMG_3187.jpg" alt="外構・エクステリア工事の様子" loading="lazy"><div class="svc-body"><h3>外構・エクステリア</h3><p>フェンスの補修やカーポート・お庭の外構工事</p><ul><li>フェンス修理</li><li>カーポート</li><li>ブロック塀</li></ul></div></li>
+        <li class="svc"><img src="img/IMG_3193.jpg" alt="庭木の剪定・草刈りの様子" loading="lazy"><div class="svc-body"><h3>お庭・剪定・除草</h3><p>伸び切った庭木の剪定や草刈り、お庭のお手入れ</p><ul><li>庭木剪定</li><li>伐採</li><li>草刈り・清掃</li></ul></div></li>
+        <li class="svc"><img src="img/IMG_3220.jpg" alt="外壁・塗装作業の様子" loading="lazy"><div class="svc-body"><h3>外壁・塗装・ペイント</h3><p>外壁や塀、木部の塗り替えで住まいを保護</p><ul><li>外壁塗装</li><li>木部塗装</li><li>塗り替え</li></ul></div></li>
+        <li class="svc"><img src="img/IMG_3215.jpg" alt="壁紙・床の内装作業の様子" loading="lazy"><div class="svc-body"><h3>壁紙・床・内装</h3><p>壁紙の補修・張り替えや床材の張替え・内装</p><ul><li>クロス張り替え</li><li>フローリング</li><li>床補修</li></ul></div></li>
+        <li class="svc"><img src="img/shoji.jpg" alt="障子の張り替え" loading="lazy"><div class="svc-body"><h3>網戸・障子・建具</h3><p>網戸の張り替えや障子・引き戸のガタつき調整</p><ul><li>網戸張り替え</li><li>障子</li><li>扉滑り調整</li></ul></div></li>
+        <li class="svc"><img src="img/IMG_3201.jpg" alt="水回り・配管の修理" loading="lazy"><div class="svc-body"><h3>水回り・配管</h3><p>蛇口の水漏れやパッキン交換、水回りトラブル</p><ul><li>蛇口水漏れ</li><li>パッキン交換</li><li>つまり</li></ul></div></li>
+        <li class="svc"><img src="img/IMG_3214.jpg" alt="電気・照明の作業" loading="lazy"><div class="svc-body"><h3>電気・Wi-Fi・照明</h3><p>高所の電球交換からWi-Fi・各種機器の設定まで</p><ul><li>高所電球交換</li><li>インターホン</li><li>Wi-Fi設定</li></ul></div></li>
+        <li class="svc"><img src="img/IMG_3210.jpg" alt="エアコン・家電の作業" loading="lazy"><div class="svc-body"><h3>エアコン・家電</h3><p>エアコンの簡易清掃や取り外し、家電の設置</p><ul><li>エアコン清掃</li><li>取り外し</li><li>家電設置</li></ul></div></li>
+        <li class="svc"><img src="img/IMG_3207.jpg" alt="日曜大工・木工の作業" loading="lazy"><div class="svc-body"><h3>日曜大工・木工</h3><p>手すりの設置や使いやすい棚の取り付け・大工仕事</p><ul><li>手すり設置</li><li>棚板取り付け</li><li>木工修繕</li></ul></div></li>
+        <li class="svc"><img src="img/IMG_3222.jpg" alt="住まいの修繕作業" loading="lazy"><div class="svc-body"><h3>住まいの修繕</h3><p>雨樋の清掃・修理や住まいの小さな破損を補修</p><ul><li>雨樋修理</li><li>鍵交換</li><li>扉調整</li></ul></div></li>
+        <li class="svc"><img src="img/IMG_3198.jpg" alt="家具の移動・組み立て" loading="lazy"><div class="svc-body"><h3>家具・その他雑作業</h3><p>家具の移動・組み立てやポスト設置など小さな困りごと</p><ul><li>大型家具移動</li><li>組み立て</li><li>ポスト設置</li></ul></div></li>
+      </ul>
+
+      <div class="anything">
+        <div class="kid">
+          <img src="img/otouto.jpg" alt="作業着を着た小さな助っ人（弟）" loading="lazy">
+          <p class="kid-bubble">僕もパパのお手伝いに<br><span>ついて行ってるよ！</span></p>
+        </div>
+        <div>
+          <h3>ここに載っていないことも、<span>まずはご相談ください！</span></h3>
+          <p>「こんなこと頼んでいいのかな？」という小さなお困りごとも大歓迎です。できる限り対応いたします。</p>
+        </div>
+        <a class="btn btn-line" href="https://lin.ee/r9Gij4d" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-line"/></svg>LINEで相談</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="area">
+    <div class="wrap area">
+      <img class="area-photo" src="img/IMG_3225.jpg" alt="新潟県内での屋根・高所作業の現場" loading="lazy">
+      <div>
+        <div class="sec-head left">
+          <span class="en">Area</span>
+          <h2>対応エリア</h2>
+        </div>
+        <p class="area-big">新潟県内<br><span>どこでも</span>出張！</p>
+        <p>新潟市をはじめ、県内全域にお伺いします。「遠いから無理かな？」と思ったら、まずはお気軽にご連絡ください。</p>
+        <ul class="cities" aria-label="主な対応地域">
+          <li>新潟市</li><li>長岡市</li><li>上越市</li><li>三条市</li><li>新発田市</li><li>柏崎市</li><li>燕市</li><li>ほか県内全域</li>
+        </ul>
+        <div class="snow">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5"/></svg>
+          <p><b>冬の雪下ろしもお任せください</b><br>危険な屋根の上の作業は、無理をせず助っ人にご依頼ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="price">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="en">Price</span>
+        <h2>料金について</h2>
+        <p>作業の内容やお住まいの状況によって費用が変わるため、まずは無料でお見積もりいたします。</p>
+      </div>
+      <ul class="promise">
+        <li><b>お見積もり無料</b><span>ご相談・お見積もりに<br>費用はかかりません</span></li>
+        <li><b>即日対応可</b><span>お急ぎのお困りごとも<br>できる限りすぐに伺います</span></li>
+        <li><b>小さな作業から</b><span>電球1つの交換から<br>本格リフォームまで</span></li>
+      </ul>
+      <h3 class="flow-title">ご相談の流れ</h3>
+      <ol class="flow">
+        <li><h4>LINE・お電話でご相談</h4><p>お困りごとの内容をお聞かせください。メールでも受け付けています。</p></li>
+        <li><h4>無料でお見積もり</h4><p>作業内容を確認し、費用をお伝えします。</p></li>
+        <li><h4>作業・お手伝い</h4><p>ご納得いただけたら作業に入ります。</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="en">Contact</span>
+        <h2>ご質問・ご相談はこちらから</h2>
+        <p>どんなことでもお気軽にお問い合わせください。※お見積もり無料・即日対応可</p>
+      </div>
+      <div class="contact-box">
+        <div>
+          <h3>お電話でのご相談</h3>
+          <a class="contact-tel" href="tel:09028473701">090-2847-3701</a>
+          <a class="btn btn-tel" href="tel:09028473701"><svg aria-hidden="true"><use href="#i-tel"/></svg>電話をかける</a>
+        </div>
+        <div>
+          <h3>LINEでのご相談</h3>
+          <p class="note">友だち追加して、<br>メッセージでお気軽にどうぞ</p>
+          <a class="btn btn-line" href="https://lin.ee/r9Gij4d" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-line"/></svg>LINEで相談する</a>
+        </div>
+      </div>
+      <p class="mail">メールでのお問い合わせ：<a href="mailto:sukettosan911@gmail.com">sukettosan911@gmail.com</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="img/logo.svg" alt="" width="56" height="56">
+        <div><b>田村設備</b>田村 助っ人さん｜住まいの修繕・各種サービス</div>
+      </div>
+      <nav class="foot-nav" aria-label="フッターメニュー">
+        <a href="#company">私たちについて</a><a href="#service">サービス</a><a href="#area">対応エリア</a><a href="#price">料金</a><a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+    <p class="copy">© 2026 田村設備. All rights reserved.</p>
+  </div>
+</footer>
+
+<nav class="fixbar" aria-label="すぐに相談">
+  <a class="t" href="tel:09028473701"><svg aria-hidden="true"><use href="#i-tel"/></svg>電話する</a>
+  <a class="l" href="https://lin.ee/r9Gij4d" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-line"/></svg>LINEで相談</a>
+</nav>
+
+</body>
+</html>
