@@ -325,6 +325,18 @@
     .price-table td::before { content: attr(data-label); display: block; font-family: var(--body); font-size: 11px; font-weight: 500; color: var(--ink-soft); }
   }
 
+  /* ---------- 追加候補メニュー（仮・公開前に取捨選択する下書き） ---------- */
+  .cand-head { border: 2px dashed #d99a00; background: #fff8e6; padding: 20px 24px; margin: 0 0 24px; }
+  .cand-head h3 { margin: 0 0 6px; font-family: var(--display); font-weight: 900; font-size: 22px; line-height: 1.4; color: var(--navy); }
+  .cand-head p { margin: 0; font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
+  .badge-draft { display: inline-block; margin-left: 8px; padding: 1px 8px; font-family: var(--body); font-size: 12px; font-weight: 700; line-height: 1.6; color: #7a4f00; background: #ffe3a1; vertical-align: middle; }
+  .price-card.cand { outline: 2px dashed #efc35a; outline-offset: -2px; }
+  .price-table .ref { white-space: normal; text-align: left; font-size: 12px; line-height: 1.6; color: var(--ink-soft); width: 40%; }
+  .price-notes .warn { color: #b3261e; font-weight: 700; }
+  @media (max-width: 560px) {
+    .price-table td.ref { grid-column: 1 / -1; width: auto; margin-top: 2px; }
+  }
+
   /* ---------- profile（会社概要） ---------- */
   .profile { max-width: 860px; margin: 0 auto; border-top: 2px solid var(--navy); }
   .profile > div { display: grid; grid-template-columns: 200px 1fr; border-bottom: 1px solid var(--line); }
@@ -341,7 +353,7 @@
   /* 日本語は <wbr> を入れた文節の切れ目でだけ折り返す（入りきらない時だけ文字単位） */
   .hero h1, .hero-lead, .sec-head h2, .sec-head p, .company-text p, .company-photos figcaption,
   .svc h3, .anything h3, .anything h3 + p, .area p, .snow p, .flow p, .promise span, .profile dd,
-  .price-common p, .price-sub, .price-notes li, .price-table tbody th {
+  .price-common p, .price-sub, .price-notes li, .price-table tbody th, .cand-head p {
     word-break: keep-all; overflow-wrap: anywhere;
   }
   @media (max-width: 560px) { .hero h1 { font-size: clamp(22px, 6.6vw, 30px); } }
@@ -587,6 +599,174 @@
           <p class="price-big">時価</p>
         </article>
       </div>
+
+      <!-- ===== 追加候補メニュー（仮）ここから：公開前に取捨選択し、決まったら「仮」「参考」を消す ===== -->
+      <div class="cand-head" id="price-candidates">
+        <h3>追加候補メニュー<span class="badge-draft">仮</span></h3>
+        <p>新潟の便利屋さん8社の<wbr>料金を参考にした<wbr>仮のメニューです。<wbr>残すものを選んで、<wbr>料金を決めてください。<wbr>参考価格は<wbr>各社の表示のままで、<wbr>税込と税別が<wbr>混ざっています。</p>
+      </div>
+
+      <div class="price-grid">
+        <article class="price-card cand">
+          <h3>時間制のおまかせ作業<span class="badge-draft">仮</span></h3>
+          <p class="price-sub">決まった料金がない<wbr>作業に使えます。</p>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">作業料金<small>1名・1時間あたり</small></th><td class="total" data-label="料金（仮）">4,500円</td><td class="ref" data-label="参考">お茶の間レスキュー隊 4,500円／天一堂 3,000円／ワンストップ代行 4,180円〜</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="price-card cand">
+          <h3>草刈り・<wbr>お庭のお手入れ<span class="badge-draft">仮</span></h3>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">草刈り・草取り<small>1時間あたり</small></th><td class="total" data-label="料金（仮）">5,000円〜</td><td class="ref" data-label="参考">お宅かたづけ隊 5,000円/時〜／ありがとうあべさん 2時間10,000円</td></tr>
+              <tr><th scope="row">除草作業<small>1㎡あたり</small></th><td class="total" data-label="料金（仮）">330円〜</td><td class="ref" data-label="参考">アースカンパニー 330円〜</td></tr>
+              <tr><th scope="row">枝切り・剪定・伐採</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜</td></tr>
+              <tr><th scope="row">お庭のお掃除</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="price-card cand">
+          <h3>雪かき・<wbr>雪下ろし<span class="badge-draft">仮</span></h3>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">雪かき</th><td class="total" data-label="料金（仮）">4,400円〜</td><td class="ref" data-label="参考">アースカンパニー 4,400円〜</td></tr>
+              <tr><th scope="row">屋根の雪下ろし</th><td class="total" data-label="料金（仮）">お見積もり</td><td class="ref" data-label="参考">アースカンパニー 別途見積もり</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="price-card cand">
+          <h3>水回り<span class="badge-draft">仮</span></h3>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">詰まり・水漏れの対応</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜／アースカンパニー トイレ詰まり6,600円〜</td></tr>
+              <tr><th scope="row">水栓・パッキン・コマ交換</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜</td></tr>
+              <tr><th scope="row">蛇口の交換</th><td class="total" data-label="料金（仮）">11,000円〜</td><td class="ref" data-label="参考">やさしい便利屋 11,000円〜</td></tr>
+              <tr><th scope="row">温水洗浄便座の取り付け<small>部材費別</small></th><td class="total" data-label="料金（仮）">13,200円〜</td><td class="ref" data-label="参考">やさしい便利屋 13,200円〜</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="price-card cand">
+          <h3>エアコン<span class="badge-draft">仮</span></h3>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">エアコンクリーニング<small>標準タイプ</small></th><td class="total" data-label="料金（仮）">13,200円〜</td><td class="ref" data-label="参考">やさしい便利屋 13,200円〜／ワンストップ代行 12,980円〜（税別）／お宅かたづけ隊 10,000円〜</td></tr>
+              <tr><th scope="row">エアコンクリーニング<small>お掃除機能付き</small></th><td class="total" data-label="料金（仮）">22,000円〜</td><td class="ref" data-label="参考">やさしい便利屋 22,000円〜</td></tr>
+              <tr><th scope="row">エアコンの取り外し</th><td class="total" data-label="料金（仮）">8,800円〜</td><td class="ref" data-label="参考">やさしい便利屋 8,800円〜</td></tr>
+              <tr><th scope="row">エアコンの取り付け</th><td class="total" data-label="料金（仮）">33,000円〜</td><td class="ref" data-label="参考">やさしい便利屋 33,000円〜</td></tr>
+            </tbody>
+          </table>
+          <ul class="price-notes"><li class="warn">⚠取り付けは<wbr>電気工事の資格が<wbr>必要な場合があります。</li></ul>
+        </article>
+
+        <article class="price-card cand">
+          <h3>電気・<wbr>照明<span class="badge-draft">仮</span></h3>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">電球・蛍光灯の交換</th><td class="total" data-label="料金（仮）">3,300円〜</td><td class="ref" data-label="参考">やさしい便利屋 3,300円〜</td></tr>
+              <tr><th scope="row">照明器具の交換</th><td class="total" data-label="料金（仮）">8,250円〜</td><td class="ref" data-label="参考">やさしい便利屋 8,250円〜</td></tr>
+              <tr><th scope="row">インターホンの修理<small>部材費別</small></th><td class="total" data-label="料金（仮）">11,000円〜</td><td class="ref" data-label="参考">やさしい便利屋 11,000円〜</td></tr>
+              <tr><th scope="row">テレビアンテナの点検・調整</th><td class="total" data-label="料金（仮）">16,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 16,500円〜</td></tr>
+              <tr><th scope="row">防犯カメラの設置</th><td class="total" data-label="料金（仮）">11,000円〜</td><td class="ref" data-label="参考">やさしい便利屋 11,000円〜</td></tr>
+            </tbody>
+          </table>
+          <ul class="price-notes"><li class="warn">⚠配線を伴う作業は<wbr>電気工事の資格が<wbr>必要です。</li></ul>
+        </article>
+
+        <article class="price-card cand">
+          <h3>ハウスクリーニング<span class="badge-draft">仮</span></h3>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">お風呂</th><td class="total" data-label="料金（仮）">13,200円〜</td><td class="ref" data-label="参考">やさしい便利屋 13,200円〜／お宅かたづけ隊 12,000円〜</td></tr>
+              <tr><th scope="row">キッチン</th><td class="total" data-label="料金（仮）">14,300円〜</td><td class="ref" data-label="参考">やさしい便利屋 14,300円〜／お宅かたづけ隊 13,000円〜</td></tr>
+              <tr><th scope="row">トイレ</th><td class="total" data-label="料金（仮）">8,800円〜</td><td class="ref" data-label="参考">やさしい便利屋 8,800円〜／お宅かたづけ隊 10,000円〜</td></tr>
+              <tr><th scope="row">レンジフード・換気扇</th><td class="total" data-label="料金（仮）">11,000円〜</td><td class="ref" data-label="参考">やさしい便利屋 11,000円〜（プロペラ式 7,700円〜）</td></tr>
+              <tr><th scope="row">洗面台</th><td class="total" data-label="料金（仮）">5,000円〜</td><td class="ref" data-label="参考">お宅かたづけ隊 5,000円〜</td></tr>
+              <tr><th scope="row">窓ガラス</th><td class="total" data-label="料金（仮）">2,000円〜</td><td class="ref" data-label="参考">お宅かたづけ隊 2,000円〜</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="price-card cand">
+          <h3>家具移動・<wbr>引越しのお手伝い<span class="badge-draft">仮</span></h3>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">家具の移動・組み立て</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜／アースカンパニー 3,300円〜／天一堂 ベッド移動1時間5,500円</td></tr>
+              <tr><th scope="row">引越しのお手伝い</th><td class="total" data-label="料金（仮）">8,800円〜</td><td class="ref" data-label="参考">アースカンパニー 8,800円〜</td></tr>
+              <tr><th scope="row">冷蔵庫・洗濯機・ベッドの運搬<small>軽トラ・1名・2時間以内</small></th><td class="total" data-label="料金（仮）">22,000円</td><td class="ref" data-label="参考">天一堂 22,000円</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="price-card cand">
+          <h3>不用品回収・<wbr>片付け<span class="badge-draft">仮</span></h3>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">不用品の単品回収<small>1点から</small></th><td class="total" data-label="料金（仮）">5,000円〜</td><td class="ref" data-label="参考">ゴミえもん 5,000円〜</td></tr>
+              <tr><th scope="row">軽トラック積み放題</th><td class="total" data-label="料金（仮）">15,000円〜</td><td class="ref" data-label="参考">ゴミえもん 通常15,000円（割引時8,000円〜）</td></tr>
+              <tr><th scope="row">2tトラック積み放題</th><td class="total" data-label="料金（仮）">30,000円〜</td><td class="ref" data-label="参考">ゴミえもん 通常30,000円（割引時18,000円〜）</td></tr>
+              <tr><th scope="row">遺品整理・生前整理<small>1R〜1LDK</small></th><td class="total" data-label="料金（仮）">30,000円〜</td><td class="ref" data-label="参考">お宅かたづけ隊 30,000〜110,000円（税抜）／やさしい便利屋 1K 50,000円〜</td></tr>
+              <tr><th scope="row">ゴミ出し</th><td class="total" data-label="料金（仮）">4,400円〜</td><td class="ref" data-label="参考">アースカンパニー 4,400円〜</td></tr>
+            </tbody>
+          </table>
+          <ul class="price-notes"><li class="warn">⚠家庭ごみの回収には<wbr>市町村の許可、<wbr>買い取りには<wbr>古物商の許可が<wbr>必要です。</li></ul>
+        </article>
+
+        <article class="price-card cand">
+          <h3>外回り・<wbr>小さな修繕<span class="badge-draft">仮</span></h3>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">雨どいの掃除・修理</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜</td></tr>
+              <tr><th scope="row">木部・鉄部の修理・塗装</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜</td></tr>
+              <tr><th scope="row">コンクリートのひび割れ補修</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜</td></tr>
+              <tr><th scope="row">目地のコーキング</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜</td></tr>
+              <tr><th scope="row">鍵・ドアノブの交換<small>部材費別</small></th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜</td></tr>
+              <tr><th scope="row">畳の表替え<small>1枚</small></th><td class="total" data-label="料金（仮）">5,000円〜</td><td class="ref" data-label="参考">お宅かたづけ隊 5,000円〜</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="price-card cand">
+          <h3>暮らしのサポート・<wbr>代行<span class="badge-draft">仮</span></h3>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">お墓の掃除</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">アースカンパニー 5,500円〜／やさしい便利屋 13,200円〜</td></tr>
+              <tr><th scope="row">話し相手・付き添い</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜</td></tr>
+              <tr><th scope="row">タイヤ交換<small>4本・普通車まで</small></th><td class="total" data-label="料金（仮）">3,300円〜</td><td class="ref" data-label="参考">アースカンパニー 3,300円〜</td></tr>
+              <tr><th scope="row">冠婚葬祭などの代理出席</th><td class="total" data-label="料金（仮）">5,500円〜</td><td class="ref" data-label="参考">やさしい便利屋 5,500円〜</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="price-card cand">
+          <h3>ハチの巣・<wbr>害虫対策<span class="badge-draft">仮</span></h3>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">メニュー</th><th scope="col">料金（仮）</th><th scope="col">参考</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">アシナガバチの巣の駆除</th><td class="total" data-label="料金（仮）">8,800円〜</td><td class="ref" data-label="参考">やさしい便利屋 8,800円〜</td></tr>
+              <tr><th scope="row">スズメバチの巣の駆除</th><td class="total" data-label="料金（仮）">22,000円〜</td><td class="ref" data-label="参考">やさしい便利屋 22,000円〜</td></tr>
+              <tr><th scope="row">鳩よけ対策</th><td class="total" data-label="料金（仮）">11,000円〜</td><td class="ref" data-label="参考">やさしい便利屋 11,000円〜</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+      <!-- ===== 追加候補メニュー（仮）ここまで ===== -->
 
       <ul class="promise">
         <li><b>お見積もり無料</b><span>ご相談・お見積もりに<br>費用はかかりません。</span></li>
