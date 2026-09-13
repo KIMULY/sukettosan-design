@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="新潟の便利屋「田村 助っ人さん」（田村設備）。住まいの修繕40年、新潟県内全域に出張。お見積もり無料・即日対応可。">
+<meta name="description" content="新潟の便利屋「田村 助っ人さん」。住まいの修繕40年、新潟県内全域に出張。お見積もり無料・即日対応可。">
 <link rel="icon" href="img/logo.svg" type="image/svg+xml">
 <title>田村 助っ人さん</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -294,9 +294,22 @@
   .foot-nav a:hover { color: #fff; }
   .copy { border-top: 1px solid rgba(255,255,255,.12); padding-top: 20px; text-align: center; }
 
+  /* ---------- profile（会社概要） ---------- */
+  .profile { max-width: 860px; margin: 0 auto; border-top: 2px solid var(--navy); }
+  .profile > div { display: grid; grid-template-columns: 200px 1fr; border-bottom: 1px solid var(--line); }
+  .profile dt { background: var(--tint); padding: 18px 24px; font-weight: 700; color: var(--navy); }
+  .profile dd { margin: 0; padding: 18px 24px; }
+  .profile dd a { color: var(--navy); font-weight: 700; }
+  .profile dd small { display: block; margin-top: 4px; font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
+  @media (max-width: 560px) {
+    .profile > div { grid-template-columns: 1fr; }
+    .profile dt { padding: 10px 16px; font-size: 14px; }
+    .profile dd { padding: 12px 16px 16px; }
+  }
+
   /* 日本語は <wbr> を入れた文節の切れ目でだけ折り返す（入りきらない時だけ文字単位） */
   .hero h1, .hero-lead, .sec-head h2, .sec-head p, .company-text p, .company-photos figcaption,
-  .svc h3, .anything h3, .anything h3 + p, .area p, .snow p, .flow p, .promise span {
+  .svc h3, .anything h3, .anything h3 + p, .area p, .snow p, .flow p, .promise span, .profile dd {
     word-break: keep-all; overflow-wrap: anywhere;
   }
   @media (max-width: 560px) { .hero h1 { font-size: clamp(22px, 6.6vw, 30px); } }
@@ -328,15 +341,15 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="#top">
-      <img src="img/logo.svg" alt="田村設備 ロゴ" width="52" height="52">
+      <img src="img/logo.svg" alt="田村 助っ人さん ロゴ" width="52" height="52">
       <span class="brand-name">田村 助っ人さん<span class="brand-sub">新潟の便利屋・住まいのお困りごと</span></span>
     </a>
     <nav class="gnav" aria-label="メインメニュー">
-      <a href="#top">トップ<small>Top</small></a>
       <a href="#company">私たちについて<small>Company</small></a>
       <a href="#service">サービス<small>Service</small></a>
       <a href="#area">対応エリア<small>Area</small></a>
       <a href="#price">料金<small>Price</small></a>
+      <a href="#profile">会社概要<small>Profile</small></a>
       <a href="#contact">お問い合わせ<small>Contact</small></a>
     </nav>
     <a class="head-tel" href="tel:09028473701" aria-label="電話をかける 090-2847-3701">
@@ -366,8 +379,8 @@
       </div>
       <figure class="hero-person">
         <p class="hero-bubble">小さな「困った」も<br><span>お気軽にどうぞ！</span></p>
-        <img src="img/papa.png" alt="田村設備 代表の写真" width="900" height="900">
-        <figcaption class="hero-name">田村設備 代表<b>田村 助っ人さん</b></figcaption>
+        <img src="img/papa.png" alt="田村 助っ人さんの写真" width="900" height="900">
+        <figcaption class="hero-name"><b>田村 助っ人さん</b></figcaption>
       </figure>
     </div>
   </section>
@@ -391,7 +404,7 @@
       </div>
       <div class="company-photos">
         <figure>
-          <img src="img/introductionImg.jpg" alt="田村設備 代表">
+          <img src="img/introductionImg.jpg" alt="田村 助っ人さん">
           <figcaption>地域に根ざして40年、<wbr>住まいを<wbr>見守ってきました</figcaption>
         </figure>
         <figure>
@@ -480,6 +493,25 @@
     </div>
   </section>
 
+  <section class="section" id="profile">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="en">Profile</span>
+        <h2>会社概要</h2>
+      </div>
+      <dl class="profile">
+        <div><dt>屋号</dt><dd>田村 助っ人さん</dd></div>
+        <div><dt>事業内容</dt><dd>住まいの修繕・<wbr>便利屋サービス<small>屋根・<wbr>高所作業、<wbr>外構・<wbr>エクステリア、<wbr>お庭の剪定・<wbr>除草、<wbr>外壁塗装、<wbr>壁紙・<wbr>床・<wbr>内装、<wbr>網戸・<wbr>障子・<wbr>建具、<wbr>水回り・<wbr>配管、<wbr>電気・<wbr>Wi-Fi・<wbr>照明、<wbr>エアコン・<wbr>家電、<wbr>日曜大工・<wbr>木工、<wbr>家具移動 <wbr>ほか</small></dd></div>
+        <div><dt>実績</dt><dd>住まいの修繕 40年</dd></div>
+        <div><dt>対応エリア</dt><dd>新潟県内全域</dd></div>
+        <div><dt>電話番号</dt><dd><a href="tel:09028473701">090-2847-3701</a></dd></div>
+        <div><dt>メール</dt><dd><a href="mailto:sukettosan911@gmail.com">sukettosan911@gmail.com</a></dd></div>
+        <div><dt>LINE</dt><dd><a href="https://lin.ee/r9Gij4d" target="_blank" rel="noopener">LINEで相談する</a></dd></div>
+        <div><dt>お見積もり</dt><dd>無料・<wbr>即日対応可</dd></div>
+      </dl>
+    </div>
+  </section>
+
   <section class="contact" id="contact">
     <div class="wrap">
       <div class="sec-head">
@@ -509,13 +541,13 @@
     <div class="foot-top">
       <div class="foot-brand">
         <img src="img/logo.svg" alt="" width="56" height="56">
-        <div><b>田村設備</b>田村 助っ人さん｜住まいの修繕・各種サービス</div>
+        <div><b>田村 助っ人さん</b>新潟の便利屋｜住まいの修繕・各種サービス</div>
       </div>
       <nav class="foot-nav" aria-label="フッターメニュー">
-        <a href="#company">私たちについて</a><a href="#service">サービス</a><a href="#area">対応エリア</a><a href="#price">料金</a><a href="#contact">お問い合わせ</a>
+        <a href="#company">私たちについて</a><a href="#service">サービス</a><a href="#area">対応エリア</a><a href="#price">料金</a><a href="#profile">会社概要</a><a href="#contact">お問い合わせ</a>
       </nav>
     </div>
-    <p class="copy">© 2026 田村設備. All rights reserved.</p>
+    <p class="copy">© 2026 田村 助っ人さん. All rights reserved.</p>
   </div>
 </footer>
 
