@@ -294,6 +294,37 @@
   .foot-nav a:hover { color: #fff; }
   .copy { border-top: 1px solid rgba(255,255,255,.12); padding-top: 20px; text-align: center; }
 
+  /* ---------- price table（料金表） ---------- */
+  .price-common { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 24px; background: var(--navy); color: #fff; padding: 18px 28px; margin: 0 0 24px; }
+  .price-common p { margin: 0; flex: 1 1 20em; font-size: 14px; line-height: 1.8; color: #d5dcec; }
+  .price-common .price-common-title { flex: 0 0 auto; font-family: var(--display); font-weight: 900; font-size: 18px; color: #fff; }
+  .price-common-title b { margin-left: 6px; font-size: 26px; color: #ffb28a; font-variant-numeric: tabular-nums; }
+  .price-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 0 0 64px; }
+  .price-card { background: #fff; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 10px; }
+  .price-card h3 { margin: 0; font-family: var(--display); font-weight: 900; font-size: 21px; line-height: 1.4; color: var(--navy); }
+  .price-sub { margin: 0; font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
+  .price-table { width: 100%; border-collapse: collapse; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .price-table th, .price-table td { padding: 12px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; font-size: 15px; line-height: 1.5; }
+  .price-table thead th { background: var(--tint); padding-block: 8px; font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+  .price-table th:first-child { text-align: left; white-space: normal; }
+  .price-table tbody th { font-weight: 700; color: var(--ink); }
+  .price-table tbody th small { display: block; font-size: 12px; font-weight: 500; color: var(--ink-soft); }
+  .price-table .total { font-family: var(--display); font-weight: 900; font-size: 19px; color: var(--orange-text); }
+  .price-table .cell-wrap { white-space: normal; }
+  .price-notes { margin: 2px 0 0; padding: 0; list-style: none; font-size: 13px; line-height: 1.8; color: var(--ink-soft); }
+  .price-big { margin: 4px 0 0; font-family: var(--display); font-weight: 900; font-size: 30px; line-height: 1.3; color: var(--orange-text); }
+  @media (max-width: 860px) { .price-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) {
+    .price-common { padding: 16px 18px; }
+    .price-card { padding: 22px 18px 18px; }
+    .price-table thead { display: none; }
+    .price-table tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 8px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .price-table.cols2 tr { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .price-table tbody th { grid-column: 1 / -1; }
+    .price-table th, .price-table td { padding: 0; border: 0; text-align: left; }
+    .price-table td::before { content: attr(data-label); display: block; font-family: var(--body); font-size: 11px; font-weight: 500; color: var(--ink-soft); }
+  }
+
   /* ---------- profile（会社概要） ---------- */
   .profile { max-width: 860px; margin: 0 auto; border-top: 2px solid var(--navy); }
   .profile > div { display: grid; grid-template-columns: 200px 1fr; border-bottom: 1px solid var(--line); }
@@ -309,7 +340,8 @@
 
   /* 日本語は <wbr> を入れた文節の切れ目でだけ折り返す（入りきらない時だけ文字単位） */
   .hero h1, .hero-lead, .sec-head h2, .sec-head p, .company-text p, .company-photos figcaption,
-  .svc h3, .anything h3, .anything h3 + p, .area p, .snow p, .flow p, .promise span, .profile dd {
+  .svc h3, .anything h3, .anything h3 + p, .area p, .snow p, .flow p, .promise span, .profile dd,
+  .price-common p, .price-sub, .price-notes li, .price-table tbody th {
     word-break: keep-all; overflow-wrap: anywhere;
   }
   @media (max-width: 560px) { .hero h1 { font-size: clamp(22px, 6.6vw, 30px); } }
@@ -477,8 +509,85 @@
       <div class="sec-head">
         <span class="en">Price</span>
         <h2>料金について</h2>
-        <p>作業の内容や<wbr>お住まいの状況によって<wbr>費用が<wbr>変わるため、<wbr>まずは無料で<wbr>お見積もりいたします。</p>
+        <p>主な作業の<wbr>料金の目安です。<wbr>お住まいの状況によって<wbr>変わることがあるため、<wbr>正式な金額は<wbr>無料で<wbr>お見積もりいたします。</p>
       </div>
+
+      <div class="price-common">
+        <p class="price-common-title">出張費<b>3,000円</b></p>
+        <p>網戸・<wbr>障子・<wbr>襖・<wbr>クロスの作業には、<wbr>別途<wbr>出張費がかかります。<wbr>距離によっては<wbr>1kmあたり100円での<wbr>計算も<wbr>ご相談いただけます。</p>
+      </div>
+
+      <div class="price-grid">
+        <article class="price-card">
+          <h3>網戸の張り替え</h3>
+          <p class="price-sub">縦と横の長さを<wbr>足した合計で<wbr>料金が決まります。</p>
+          <table class="price-table">
+            <thead><tr><th scope="col">縦＋横の合計</th><th scope="col">工賃</th><th scope="col">材料</th><th scope="col">合計</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">〜2,000mm<small>目安：3尺×3尺</small></th><td data-label="工賃">1,500円</td><td data-label="材料">500円</td><td class="total" data-label="合計">2,000円</td></tr>
+              <tr><th scope="row">2,001〜2,500mm<small>目安：3尺×4.5尺</small></th><td data-label="工賃">1,800円</td><td data-label="材料">750円</td><td class="total" data-label="合計">2,550円</td></tr>
+              <tr><th scope="row">2,501mm〜<small>目安：3尺×6尺</small></th><td data-label="工賃">2,100円</td><td data-label="材料">1,000円</td><td class="total" data-label="合計">3,100円</td></tr>
+            </tbody>
+          </table>
+          <ul class="price-notes"><li>※網目180の網で<wbr>張り替えます。</li></ul>
+        </article>
+
+        <article class="price-card">
+          <h3>障子の張り替え</h3>
+          <p class="price-sub">強化紙で<wbr>張り替えます。</p>
+          <table class="price-table">
+            <thead><tr><th scope="col">サイズ</th><th scope="col">工賃</th><th scope="col">材料</th><th scope="col">合計</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">普通巾×掃き出し窓</th><td data-label="工賃">2,000円</td><td data-label="材料">400円</td><td class="total" data-label="合計">2,400円</td></tr>
+              <tr><th scope="row">普通巾×腰窓</th><td data-label="工賃">1,500円</td><td data-label="材料">200円</td><td class="total" data-label="合計">1,700円</td></tr>
+            </tbody>
+          </table>
+          <ul class="price-notes"><li>※運搬・<wbr>建て込みは<wbr>別料金です。</li></ul>
+        </article>
+
+        <article class="price-card">
+          <h3>襖の張り替え</h3>
+          <p class="price-sub">サイズに合わせて<wbr>張り替えます。</p>
+          <table class="price-table">
+            <thead><tr><th scope="col">サイズ</th><th scope="col">工賃</th><th scope="col">材料</th><th scope="col">合計</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">普通巾×5.8尺</th><td data-label="工賃">3,000円</td><td data-label="材料">900円</td><td class="total" data-label="合計">3,900円</td></tr>
+              <tr><th scope="row">普通巾×1.5尺</th><td data-label="工賃">2,000円</td><td data-label="材料">225円</td><td class="total" data-label="合計">2,225円</td></tr>
+            </tbody>
+          </table>
+          <ul class="price-notes"><li>※襖紙（クロス）代は<wbr>別途かかります。</li><li>※運搬・<wbr>建て込みは<wbr>別料金です。</li></ul>
+        </article>
+
+        <article class="price-card">
+          <h3>壁紙（クロス）の張り替え</h3>
+          <p class="price-sub">普及品の<wbr>ビニールクロスで、<wbr>仕上げまで<wbr>行います。</p>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">内容</th><th scope="col">合計</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">1巾×天井まで</th><td class="total" data-label="合計">3,750円</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="price-card">
+          <h3>お買い物代行（車使用）</h3>
+          <p class="price-sub">車で<wbr>お買い物に<wbr>行ってきます。</p>
+          <table class="price-table cols2">
+            <thead><tr><th scope="col">地域</th><th scope="col">料金</th><th scope="col">時間ごと</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">同じ区内</th><td class="total" data-label="料金">2,000円</td><td class="cell-wrap" data-label="時間ごと">1時間ごとに2,000円</td></tr>
+              <tr><th scope="row">区外</th><td class="total" data-label="料金">3,000円</td><td class="cell-wrap" data-label="時間ごと">1時間ごとに2,000円</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="price-card">
+          <h3>大工工事</h3>
+          <p class="price-sub">内容に合わせて<wbr>お見積もりします。</p>
+          <p class="price-big">時価</p>
+        </article>
+      </div>
+
       <ul class="promise">
         <li><b>お見積もり無料</b><span>ご相談・お見積もりに<br>費用はかかりません。</span></li>
         <li><b>即日対応可</b><span>お急ぎのお困りごとも<br>できる限りすぐに伺います。</span></li>
